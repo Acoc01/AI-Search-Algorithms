@@ -123,8 +123,9 @@ void algorithms::greedy(std::vector<std::vector<std::pair<int, int>>> graph,
   while (!pq.empty()) {
     int u = pq.top().second;
     expanded[u] += 1;
-    std::cout << "Expandiendo : " << u << "Con heuristica : " << heuristics[u]
-              << std::endl;
+    // std::cout << "Expandiendo : " << u << "Con heuristica : " <<
+    // heuristics[u]
+    //           << std::endl;
     pq.pop();
     path[u] = 1;
     if (u == dest)
@@ -132,8 +133,9 @@ void algorithms::greedy(std::vector<std::vector<std::pair<int, int>>> graph,
     else {
       for (auto i : graph[u]) {
         if (visited[i.first] == 0) {
-          std::cout << "Visitando : " << i.first
-                    << "Con heuristica : " << heuristics[i.first] << std::endl;
+          // std::cout << "Visitando : " << i.first
+          //           << " Con heuristica : " << heuristics[i.first] <<
+          //           std::endl;
           visited[i.first] = 1;
           pq.push(std::make_pair(heuristics[i.first], i.first));
         }
@@ -192,8 +194,9 @@ void algorithms::astar(std::vector<std::vector<std::pair<int, int>>> graph,
   while (!pq.empty()) {
     int u = pq.top().second;
     dist = cost[u];
-    std::cout << "Expandiendo: " << u << " Costo + heuristica + Path: " << dist
-              << std::endl;
+    // std::cout << "Expandiendo: " << u << " Costo + heuristica + Path: " <<
+    // dist
+    //           << std::endl;
     expanded[u] += 1;
     pq.pop();
     if (u == dest)
@@ -204,9 +207,9 @@ void algorithms::astar(std::vector<std::vector<std::pair<int, int>>> graph,
           visited[i.first] = 1;
           cost[i.first] = dist + i.second;
           path[i.first] = u;
-          std::cout << "Visitando: " << i.first << ' ' << i.second
-                    << "C+H: " << cost[i.first] + heuristics[i.first]
-                    << std::endl;
+          // std::cout << "Visitando: " << i.first << ' ' << i.second
+          //           << "C+H: " << cost[i.first] + heuristics[i.first]
+          //           << std::endl;
           pq.push(std::make_pair(cost[i.first] + heuristics[i.first], i.first));
         }
       }
